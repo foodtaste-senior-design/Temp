@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class ExitPortal : MonoBehaviour {
-	
-	private static bool inPortal;
 
+	public string nextLevel;
+
+	private static bool inPortal;
 	private LevelManager manager;
-	
+
 	// Use this for initialization
 	void Start () {
 		inPortal = false;
@@ -24,6 +25,7 @@ public class ExitPortal : MonoBehaviour {
 		//numCollected requirement will change per level; hash this out somehow
 		if (other.transform.tag == "Player" && Collectible.numCollected() == manager.totalStones) {
 			inPortal = true;
+			Application.LoadLevel(nextLevel);
 		}
 	}
 	
