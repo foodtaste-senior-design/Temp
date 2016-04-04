@@ -7,6 +7,7 @@ public class ButtonBox : MonoBehaviour {
 	private bool leverPulled;
 	private static ButtonWall[] walls;
 
+	public AudioSource buttonSFX;
 	// Use this for initialization
 	void Start () {
 		inBox = false;
@@ -21,6 +22,7 @@ public class ButtonBox : MonoBehaviour {
 		if (Input.GetButtonDown ("Fire1") && inBox) {
 
 			if (!leverPulled){
+				buttonSFX.Play ();
 				flip ();
 				leverPulled = true;
 			}	
@@ -55,12 +57,16 @@ public class ButtonBox : MonoBehaviour {
 		return leverPulled;
 	}
 
+	// Resets the button and button walls
 	public void reset()
 	{
-		leverPulled = false;
-		flip ();
-		for (int i = 0; i < walls.Length; i++)
-			walls [i].resetWall ();
+		// Check if the button has actually been flipped
+		if (leverPulled == true) {
+			leverPulled = false;
+			flip ();
+			for (int i = 0; i < walls.Length; i++)
+				walls [i].resetWall ();
+		}
 	}
 
 	public void flip()

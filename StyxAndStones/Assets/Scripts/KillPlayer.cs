@@ -4,6 +4,7 @@ using System.Collections;
 public class KillPlayer : MonoBehaviour {
 
 	public LevelManager levelManager;
+	public AudioSource deathSFX;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class KillPlayer : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.name == "Player") {
+			deathSFX.Play ();
 			levelManager.RespawnPlayer();
 		}
 	}

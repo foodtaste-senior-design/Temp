@@ -5,6 +5,8 @@ public class Collectible : MonoBehaviour {
 
 	private static int coinsCollected;
 
+	public AudioSource pickupSFX;
+	public GameObject particleFX;
 
 	// Use this for initialization
 	void Start () {
@@ -18,9 +20,15 @@ public class Collectible : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.transform.tag == "Player") {
-			coinsCollected++;	
-			CoinCounter.addCoin(1);				// increase coin count and add coin to CoinCounter.coins
-			gameObject.SetActive(false);		// Deactivate collectible 
+			coinsCollected++;
+			// Play pickup sfx
+			pickupSFX.Play ();
+			// Start particle effect
+			Instantiate(particleFX,gameObject.transform.position,gameObject.transform.rotation);
+			// increase coin count and add coin to CoinCounter.coins
+			CoinCounter.addCoin(1);
+			// Deactivate collectible
+			gameObject.SetActive(false);		 
 
 		}
 	}

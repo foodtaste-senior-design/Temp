@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour {
 
 	public IEnumerator RespawnPlayerCo(){
 
+
 		Instantiate (deathParticle, player.transform.position, player.transform.rotation);								// Instantiate death particle effect when player dies
 		player.enabled = false;																							// Disable player controls
 		player.GetComponentInChildren<Renderer> ().enabled = false; 													// Make player disappear
@@ -41,6 +42,6 @@ public class LevelManager : MonoBehaviour {
 		player.enabled = true;																							// Enable player controls
 		player.GetComponentInChildren<Renderer> ().enabled = true;														// Make player reappear
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);		// Instantiate respawn particle effect when player respawns
-		lever.reset ();																								// Reset triggered levers
+		lever.reset ();																									// Reset triggered levers
 	}
 }

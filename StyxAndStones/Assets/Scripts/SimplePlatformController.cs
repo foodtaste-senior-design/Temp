@@ -10,6 +10,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public static float max_speed = 5f;
 	[SerializeField] public static float jump_force = 2000f;
 	public Transform ground_check;
+	public AudioSource jumpSFX;
 
 	private bool grounded = false;
 	private Animator anim;
@@ -52,6 +53,7 @@ public class SimplePlatformController : MonoBehaviour {
 
 		if (jump) {
 			anim.SetTrigger("Jump");
+			jumpSFX.Play ();
 			rb2d.AddForce(new Vector2(0f, jump_force));
 			jump = false;
 		}
