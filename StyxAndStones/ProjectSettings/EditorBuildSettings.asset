@@ -13,3 +13,7 @@ EditorBuildSettings:
     path: Assets/Sandbox.unity
   - enabled: 1
     path: Assets/Cemetery.unity
+  - enabled: 1
+    path: Assets/level_select.unity
+  - enabled: 1
+    path: Assets/Calibration.unity

@@ -72,4 +72,7 @@ public class menuScript : MonoBehaviour {
 	public void ExitGame(){
 		Application.Quit ();
 	}
+	public void calibration(){
+		Application.LoadLevel (4);
+	}
 }

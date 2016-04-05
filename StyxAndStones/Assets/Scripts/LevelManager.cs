@@ -1,28 +1,56 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 
-	private SimplePlatformController player;
+
 	public ButtonBox lever;
-	private float gravityStore;
 
 	public GameObject currentCheckpoint;
 	public GameObject deathParticle;
 	public GameObject respawnParticle;
-	public float totalStones;
 
+	public float totalStones;
+	public float levelStartDelay = 3f;
 	public float respawnDelay;
-	
+
+	public string startText;
+
+	private SimplePlatformController player;
+	private float gravityStore;
+
+	private GameObject transitionImage;
+	private Text levelText;
+
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<SimplePlatformController> ();
 		lever = FindObjectOfType<ButtonBox> ();
+		// Display and hide transition screen
+		startTransition ();
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	// Displays Level name
+	void startTransition(){
+		transitionImage = GameObject.Find ("TransitionImage");
+		levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
+		levelText.text = startText;
+		transitionImage.SetActive (true);
+		Invoke ("hideTransitionImage", levelStartDelay);
+		
+	}
+
+	// Hides level transition screen
+	private void hideTransitionImage(){
+		transitionImage.GetComponent<Image> ().color = Color.Lerp(transitionImage.GetComponent<Image>().color, Color.clear, 1.5f * Time.deltaTime);
+		transitionImage.SetActive(false);
 	}
 
 	public void RespawnPlayer()
@@ -36,12 +64,14 @@ public class LevelManager : MonoBehaviour {
 		Instantiate (deathParticle, player.transform.position, player.transform.rotation);								// Instantiate death particle effect when player dies
 		player.enabled = false;																							// Disable player controls
 		player.GetComponentInChildren<Renderer> ().enabled = false; 													// Make player disappear
+		player.background.GetComponent<Renderer> ().enabled = true;
 		yield return new WaitForSeconds (respawnDelay);																	// Delay between respawn and death
 		CoinCounter.loseCoins();																						// Reset coins and coin count
 		player.transform.position = currentCheckpoint.transform.position;												// Respawn player at checkpoint
 		player.enabled = true;																							// Enable player controls
 		player.GetComponentInChildren<Renderer> ().enabled = true;														// Make player reappear
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);		// Instantiate respawn particle effect when player respawns
-		lever.reset ();																									// Reset triggered levers
+		if (lever != null)
+			lever.reset ();																									// Reset triggered levers
 	}
 }

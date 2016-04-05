@@ -10,6 +10,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public static float max_speed = 5f;
 	[SerializeField] public static float jump_force = 2000f;
 	public Transform ground_check;
+	public GameObject background;
 	public AudioSource jumpSFX;
 
 	private bool grounded = false;
@@ -59,12 +60,17 @@ public class SimplePlatformController : MonoBehaviour {
 		}
 
 	}
-
+	
 	void Flip() {
 		facing_right = !facing_right;
+
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+
+		Vector3 bgscale = background.transform.localScale;
+		bgscale.x *= -1;
+		background.transform.localScale = bgscale;
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {

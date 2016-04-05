@@ -4,7 +4,7 @@ using System.Collections;
 public class ExitPortal : MonoBehaviour {
 
 	public string nextLevel;
-
+		
 	private static bool inPortal;
 	private LevelManager manager;
 
@@ -17,15 +17,17 @@ public class ExitPortal : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.Rotate (0,0,100*Time.deltaTime); //rotates 50 degrees per second around z axi
-		
+		transform.Rotate (0,0,100*Time.deltaTime); //rotates 50 degrees per second around z axis
+		// Check if player is trying to use the portal and has met the requirements
+		if (inPortal && Input.GetButtonDown ("Fire1")) {
+			Application.LoadLevel (nextLevel);
+		}
 	}
-	
+
 	void OnTriggerEnter2D(Collider2D other) {
 		//numCollected requirement will change per level; hash this out somehow
 		if (other.transform.tag == "Player" && Collectible.numCollected() == manager.totalStones) {
 			inPortal = true;
-			Application.LoadLevel(nextLevel);
 		}
 	}
 	
@@ -39,4 +41,6 @@ public class ExitPortal : MonoBehaviour {
 	public static bool isInPortal() {
 		return inPortal;
 	}
+
+
 }
