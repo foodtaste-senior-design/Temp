@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour {
 	private SimplePlatformController player;
 	private float gravityStore;
 
+	private TimeManager time; 
 	private GameObject transitionImage;
 	private Text levelText;
 
@@ -31,6 +32,7 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
 		player = FindObjectOfType<SimplePlatformController> ();
 		lever = FindObjectOfType<ButtonBox> ();
+		time = FindObjectOfType<TimeManager> ();
 		playerAlive = true;
 		// Display and hide transition screen
 		startTransition ();
@@ -56,6 +58,7 @@ public class LevelManager : MonoBehaviour {
 	private void hideTransitionImage(){
 		transitionImage.GetComponent<Image> ().color = Color.Lerp(transitionImage.GetComponent<Image>().color, Color.clear, 1.5f * Time.deltaTime);
 		transitionImage.SetActive(false);
+		time.startTimer ();
 	}
 
 	public void RespawnPlayer()
@@ -79,7 +82,8 @@ public class LevelManager : MonoBehaviour {
 		playerAlive = true;																								// Now the player can die
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);		// Instantiate respawn particle effect when player respawns
 		if (lever != null)
-			lever.reset ();																									// Reset triggered levers
+			lever.reset ();																								// Reset triggered levers
+		time.resetTimer ();																								// Reset timer
 	}
 
 	// Return value of playerAlive
