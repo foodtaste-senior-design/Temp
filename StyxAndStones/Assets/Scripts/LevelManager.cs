@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour {
 	public float totalStones;
 	public float levelStartDelay = 3f;
 	public float respawnDelay;
+	public float deathCount;
 
 	// Texts displayed at start of level
 	public string startText;
@@ -27,13 +28,24 @@ public class LevelManager : MonoBehaviour {
 	private TimeManager time; 
 	private GameObject transitionImage;
 	private Text levelText;
+	private Text deathCountText;
 
 	// Use this for initialization
 	void Start () {
+
+		// Find game objects in scene
 		player = FindObjectOfType<SimplePlatformController> ();
 		lever = FindObjectOfType<ButtonBox> ();
 		time = FindObjectOfType<TimeManager> ();
+
+		// Set Death Counter
+		deathCount = 0;
+		deathCountText = GameObject.Find ("DeathCount").GetComponent<Text> ();
+		deathCountText.text = "Deaths: " + deathCount;
+
+
 		playerAlive = true;
+
 		// Display and hide transition screen
 		startTransition ();
 	}
@@ -73,7 +85,9 @@ public class LevelManager : MonoBehaviour {
 		playerAlive = false;																							// Prevent player from being killed again
 		player.enabled = false;																							// Disable player controls
 		player.GetComponentInChildren<Renderer> ().enabled = false; 													// Make player disappear
-		player.background.GetComponent<Renderer> ().enabled = true;														
+		player.background.GetComponent<Renderer> ().enabled = true;
+		deathCount += 1;																								// Update death counter
+		deathCountText.text = "Deaths: " + deathCount;
 		yield return new WaitForSeconds (respawnDelay);																	// Delay between respawn and death
 		CoinCounter.loseCoins();																						// Reset coins and coin count
 		player.transform.position = currentCheckpoint.transform.position;												// Respawn player at checkpoint
@@ -83,7 +97,6 @@ public class LevelManager : MonoBehaviour {
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);		// Instantiate respawn particle effect when player respawns
 		if (lever != null)
 			lever.reset ();																								// Reset triggered levers
-		time.resetTimer ();																								// Reset timer
 	}
 
 	// Return value of playerAlive

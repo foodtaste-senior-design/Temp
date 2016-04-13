@@ -14,12 +14,10 @@ public class LevelSelectPortal : MonoBehaviour {
 	public string nextLevel;
 
 	private bool inPortal;
-	private LevelManager manager;
 	
 	// Use this for initialization
 	void Start () {
 		inPortal = false;
-		manager = FindObjectOfType<LevelManager> ();
 	}
 
 
@@ -35,7 +33,7 @@ public class LevelSelectPortal : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other) {
 		//numCollected requirement will change per level; hash this out somehow
-		if (other.transform.tag == "Player" && Collectible.numCollected() == manager.totalStones) {
+		if (other.transform.tag == "Player") {
 			inPortal = true;
 		}
 	}
