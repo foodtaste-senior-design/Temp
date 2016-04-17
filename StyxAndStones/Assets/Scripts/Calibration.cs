@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Calibration : MonoBehaviour {
@@ -85,7 +86,7 @@ public class Calibration : MonoBehaviour {
 
 	void confirmCalibration () {
 		if (max_X - min_X >= 200 && max_Y - min_Y >= 125)
-			Application.LoadLevel ("StartMenu");
+			SceneManager.LoadScene ("StartMenu");
 		else
 			Debug.Log ("Values not sufficiently far apart.");
 	}

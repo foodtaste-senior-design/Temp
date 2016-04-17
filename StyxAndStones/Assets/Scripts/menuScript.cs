@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.EventSystems;
 
@@ -69,12 +70,12 @@ public class menuScript : MonoBehaviour {
 	
 	
 	public void StartLevel(){
-		Application.LoadLevel (3);
+		SceneManager.LoadScene(3);
 	}
 	public void ExitGame(){
 		Application.Quit ();
 	}
 	public void calibration(){
-		Application.LoadLevel (4);
+		SceneManager.LoadScene(4);
 	}
 }

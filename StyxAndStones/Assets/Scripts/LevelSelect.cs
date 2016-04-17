@@ -11,19 +11,12 @@ public class LevelSelect : MonoBehaviour {
 	public float levelStartDelay = 3f;
 	public float respawnDelay;
 	
-	// Texts displayed at start of level
-	public string startText;
-	
 	// Is player alive or in process of respawning 
 	private bool playerAlive;
 	
 	private SimplePlatformController player;
 	private float gravityStore;
-	
-	private TimeManager time; 
-	private GameObject transitionImage;
-	private Text levelText;
-	
+
 	// Use this for initialization
 	void Start () {
 		
@@ -31,9 +24,7 @@ public class LevelSelect : MonoBehaviour {
 		player = FindObjectOfType<SimplePlatformController> ();
 		
 		playerAlive = true;
-		
-		// Display and hide transition screen
-		startTransition ();
+
 	}
 	
 	
@@ -42,22 +33,7 @@ public class LevelSelect : MonoBehaviour {
 		
 	}
 	
-	// Displays Level name
-	void startTransition(){
-		transitionImage = GameObject.Find ("TransitionImage");
-		levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
-		levelText.text = startText;
-		transitionImage.SetActive (true);
-		Invoke ("hideTransitionImage", levelStartDelay);
-		
-	}
-	
-	// Hides level transition screen
-	private void hideTransitionImage(){
-		transitionImage.GetComponent<Image> ().color = Color.Lerp(transitionImage.GetComponent<Image>().color, Color.clear, 1.5f * Time.deltaTime);
-		transitionImage.SetActive(false);
-	}
-	
+
 	public void RespawnPlayer()
 	{
 		StartCoroutine ("RespawnPlayerCo");

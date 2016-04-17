@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.EventSystems;
 
@@ -53,11 +54,11 @@ public class PauseManager : MonoBehaviour {
 	}
 	
 	public void Restart(){
-		Application.LoadLevel (2);
+		SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 	}
 	
 	public void MainMenu (){
-		Application.LoadLevel (0);
+		SceneManager.LoadScene (0);
 	}
 	
 	public void exitPress(){

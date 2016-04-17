@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
  
@@ -26,8 +27,11 @@ public class LevelSelectPortal : MonoBehaviour {
 		
 		transform.Rotate (0,0,100*Time.deltaTime); //rotates 50 degrees per second around z axis
 		// Check if player is trying to use the portal and has met the requirements
-		if (inPortal && Input.GetButtonDown ("Fire1"))
-			Application.LoadLevel(nextLevel);
+		if (inPortal && Input.GetButtonDown ("Fire1")) {
+			PlayerPrefs.SetString ("nextLevelText", nextLevel);			// Store the level name to be displayed on transition
+			PlayerPrefs.SetString ("sceneToLoad", nextLevel);			// Store the level name to be loaded after transition
+			SceneManager.LoadScene ("Transition");
+		}
 		
 	}
 	

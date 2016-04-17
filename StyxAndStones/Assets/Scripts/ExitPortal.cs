@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ExitPortal : MonoBehaviour {
@@ -20,13 +21,12 @@ public class ExitPortal : MonoBehaviour {
 		//transform.Rotate (0,0,100*Time.deltaTime); //rotates 50 degrees per second around z axis
 		// Check if player is trying to use the portal and has met the requirements
 		if (inPortal && Input.GetButtonDown ("Fire1")) {
-			Application.LoadLevel (nextLevel);
+			SceneManager.LoadScene (nextLevel);
 		}
 		
 		if (Collectible.numCollected () == manager.totalStones) {
 			Sprite openPortal = Resources.Load<Sprite>("styx_portalOpen");
 			this.GetComponent<SpriteRenderer>().sprite = openPortal;
-			Debug.Log ("test");
 		}
 	}
 

@@ -33,10 +33,19 @@ public class LevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+
+		// Set text for level transition
+		PlayerPrefs.SetString ("nextLevelText", "Level Complete");
+		PlayerPrefs.SetString ("sceneToLoad", "level_select");
+
 		// Find game objects in scene
 		player = FindObjectOfType<SimplePlatformController> ();
 		lever = FindObjectOfType<ButtonBox> ();
 		time = FindObjectOfType<TimeManager> ();
+
+		// Start timer
+		time.startTimer ();
 
 		// Set Death Counter
 		deathCount = 0;
@@ -46,8 +55,11 @@ public class LevelManager : MonoBehaviour {
 
 		playerAlive = true;
 
+		// Set next level name
+
+
 		// Display and hide transition screen
-		startTransition ();
+		//startTransition ();
 	}
 	
 
@@ -56,7 +68,7 @@ public class LevelManager : MonoBehaviour {
 	
 	}
 
-	// Displays Level name
+	/*// Displays Level name
 	void startTransition(){
 		transitionImage = GameObject.Find ("TransitionImage");
 		levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
@@ -70,8 +82,8 @@ public class LevelManager : MonoBehaviour {
 	private void hideTransitionImage(){
 		transitionImage.GetComponent<Image> ().color = Color.Lerp(transitionImage.GetComponent<Image>().color, Color.clear, 1.5f * Time.deltaTime);
 		transitionImage.SetActive(false);
-		time.startTimer ();
-	}
+
+	}*/
 
 	public void RespawnPlayer()
 	{
