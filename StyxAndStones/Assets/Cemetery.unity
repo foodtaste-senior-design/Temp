@@ -3879,7 +3879,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146924, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11446260, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_Sprite
@@ -4962,6 +4962,14 @@ Prefab:
     - target: {fileID: 184706, guid: 3cf07725e95415544bafa4e78e69a950, type: 2}
       propertyPath: m_Name
       value: MP_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878532, guid: 3cf07725e95415544bafa4e78e69a950, type: 2}
+      propertyPath: m_Points.Array.data[0].x
+      value: -5.1653833
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878532, guid: 3cf07725e95415544bafa4e78e69a950, type: 2}
+      propertyPath: m_Points.Array.data[0].y
+      value: -0.037180096
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cf07725e95415544bafa4e78e69a950, type: 2}
