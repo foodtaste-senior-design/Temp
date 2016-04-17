@@ -35,7 +35,7 @@ public class SimplePlatformController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		float height = Input.GetAxis ("Horizontal");
+		float height = Input.GetAxis ("Horizontal");	
 		anim.SetFloat ("Speed", Mathf.Abs (height));
 		 
 		if ((height * rb2d.velocity.x) < max_speed) {
@@ -46,10 +46,12 @@ public class SimplePlatformController : MonoBehaviour {
 			rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * max_speed, rb2d.velocity.y);
 		}
 
-		if (height > 0 && !facing_right) {
-			Flip ();
-		} else if (height < 0 && facing_right) {
-			Flip ();
+		if (height > 0 ) {//&& !facing_right) {
+			//Flip ();
+			gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;    // Flip just the SpriteRenderer rather than the entire object and its children
+		} else if (height < 0 ) {// && facing_right) {
+			//Flip ();
+			gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
 		}
 
 		if (jump) {
@@ -61,7 +63,7 @@ public class SimplePlatformController : MonoBehaviour {
 
 	}
 	
-	void Flip() {
+	/*void Flip() {
 		facing_right = !facing_right;
 
 		Vector3 scale = transform.localScale;
@@ -72,6 +74,7 @@ public class SimplePlatformController : MonoBehaviour {
 		bgscale.x *= -1;
 		background.transform.localScale = bgscale;
 	}
+	*/
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.transform.tag == "MovingPlatform") {

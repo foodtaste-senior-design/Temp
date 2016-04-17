@@ -373,7 +373,6 @@ GameObject:
   - 92: {fileID: 231774500}
   - 124: {fileID: 231774499}
   - 81: {fileID: 231774498}
-  - 114: {fileID: 231774497}
   - 114: {fileID: 231774496}
   - 114: {fileID: 231774495}
   m_Layer: 0
@@ -418,19 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSize: 7.5
---- !u!114 &231774497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11450898, guid: 6aa187bc6339843479c03fdfd71404a3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 231774493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5ee821a6cdff640bbe1167a0a8782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoomSize: 7.5
+  background: {fileID: 395969024}
 --- !u!81 &231774498
 AudioListener:
   m_ObjectHideFlags: 0
@@ -849,7 +836,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -871,7 +858,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &308721088
 AudioSource:
   m_ObjectHideFlags: 0
@@ -924,7 +911,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -946,7 +933,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &308721089
 AudioSource:
   m_ObjectHideFlags: 0
@@ -999,7 +986,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1021,7 +1008,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &308721090
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -896,7 +896,6 @@ GameObject:
   - 92: {fileID: 516359081}
   - 124: {fileID: 516359080}
   - 81: {fileID: 516359079}
-  - 114: {fileID: 516359078}
   - 114: {fileID: 516359082}
   - 114: {fileID: 516359084}
   m_Layer: 0
@@ -918,19 +917,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1174903983}
   m_RootOrder: 3
---- !u!114 &516359078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11450898, guid: 6aa187bc6339843479c03fdfd71404a3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 516359076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5ee821a6cdff640bbe1167a0a8782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoomSize: 7.5
 --- !u!81 &516359079
 AudioListener:
   m_ObjectHideFlags: 0
@@ -967,6 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSize: 7.5
+  background: {fileID: 1927511607}
 --- !u!20 &516359083
 Camera:
   m_ObjectHideFlags: 0
@@ -4082,7 +4069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!4 &1601897311 stripped
 Transform:
   m_PrefabParentObject: {fileID: 455614, guid: 3cf07725e95415544bafa4e78e69a950, type: 2}
