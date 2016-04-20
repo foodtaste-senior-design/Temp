@@ -3879,7 +3879,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146924, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11446260, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_Sprite
@@ -3933,11 +3933,11 @@ Prefab:
         type: 3}
     - target: {fileID: 22410368, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 142
+      value: 894
       objectReference: {fileID: 0}
     - target: {fileID: 22410368, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 322.5
+      value: 528
       objectReference: {fileID: 0}
     - target: {fileID: 22410368, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_SizeDelta.x
@@ -3957,11 +3957,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22424104, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 142
+      value: 862
       objectReference: {fileID: 0}
     - target: {fileID: 22424104, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 322.5
+      value: 458
       objectReference: {fileID: 0}
     - target: {fileID: 22424104, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_SizeDelta.x
@@ -4018,6 +4018,10 @@ Prefab:
     - target: {fileID: 11461260, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NoPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 106204, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0317817fd2e5db458149cc38ff01261, type: 2}

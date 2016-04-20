@@ -11,32 +11,41 @@ public class Calibration : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		min_X = 0f;
-		max_X = 400f;
-		min_Y = 70f;
-		max_Y = 310f;
+		Debug.Log (PlayerPrefs.GetFloat ("XMin") + " " + PlayerPrefs.GetFloat ("XMax") + " " + PlayerPrefs.GetFloat ("YMin") + " " + PlayerPrefs.GetFloat ("YMax"));
 
+		min_X = PlayerPrefs.GetFloat ("XMin");
+		max_X = PlayerPrefs.GetFloat ("XMax");
+		min_Y = PlayerPrefs.GetFloat ("YMin");
+		max_Y = PlayerPrefs.GetFloat ("YMax");
+
+		/* do this if Floats are null
 		PlayerPrefs.SetFloat ("XMin", 0);
 		PlayerPrefs.SetFloat ("XMax", 400);
 		PlayerPrefs.SetFloat ("YMin", 70);
 		PlayerPrefs.SetFloat ("YMax", 310);
+		*/
+
+		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 
 		if (Input.GetButtonDown ("A")) {
 			setYMax ();
+			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 		}
 		if (Input.GetButtonDown ("B")) {
 			setXMax ();
+			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 		}
 		if (Input.GetButtonDown ("X")) {
 			setXMin ();
+			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 		}
 		if (Input.GetButtonDown ("Y")) {
 			setYMin();
+			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 		}
 		if (Input.GetButtonDown ("Start")) {
 			confirmCalibration();
@@ -54,13 +63,13 @@ public class Calibration : MonoBehaviour {
 	}
 
 	void setXMax () {
-		if (BodySourceView.getX () < 400){
+		if (BodySourceView.getX () < 400) {
 			max_X = BodySourceView.getX ();
 			PlayerPrefs.SetFloat ("XMax", max_X);
 		}
 		else {
 			max_X = 400;
-			PlayerPrefs.SetFloat ("XMin", min_X);
+			PlayerPrefs.SetFloat ("XMax", min_X);
 		}
 	}
 
@@ -87,7 +96,14 @@ public class Calibration : MonoBehaviour {
 	void confirmCalibration () {
 		if (max_X - min_X >= 200 && max_Y - min_Y >= 125)
 			SceneManager.LoadScene ("StartMenu");
-		else
-			Debug.Log ("Values not sufficiently far apart.");
+		else {
+			StartCoroutine ( LogError() );
+		}
+	}
+
+	IEnumerator LogError () {
+		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00") + "\n<color=orange>Values not sufficiently far apart.</color>";
+		yield return new WaitForSeconds (2);
+		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 	}
 }
