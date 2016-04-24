@@ -364,6 +364,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.35000002
       objectReference: {fileID: 0}
+    - target: {fileID: 6876824, guid: add6e73afc64ada41b8fc86e6edb6894, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: add6e73afc64ada41b8fc86e6edb6894, type: 2}
   m_IsPrefabParent: 0
@@ -2857,6 +2861,10 @@ Prefab:
       propertyPath: m_Name
       value: ColorWallEmpty_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6876824, guid: add6e73afc64ada41b8fc86e6edb6894, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: add6e73afc64ada41b8fc86e6edb6894, type: 2}
   m_IsPrefabParent: 0
@@ -3118,7 +3126,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3140,7 +3148,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &1400357152
 Transform:
   m_ObjectHideFlags: 0
@@ -3879,7 +3887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146924, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11446260, guid: f0317817fd2e5db458149cc38ff01261, type: 2}
       propertyPath: m_Sprite
@@ -4617,6 +4625,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6842754, guid: 5a23bee89b827194f9b53857344994a4, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a23bee89b827194f9b53857344994a4, type: 2}
   m_IsPrefabParent: 0
@@ -5016,6 +5028,10 @@ Prefab:
     - target: {fileID: 486832, guid: 5a23bee89b827194f9b53857344994a4, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842754, guid: 5a23bee89b827194f9b53857344994a4, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a23bee89b827194f9b53857344994a4, type: 2}

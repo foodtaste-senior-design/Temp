@@ -8,6 +8,7 @@ public class EmptyStart_ColorShiftPlatform : MonoBehaviour {
 
 	private Renderer render;
 	private BoxCollider2D collision;
+	private EdgeCollider2D edge;
 
 	const int HEAD_MIN = 50;
 	const int HEAD_MAX = 400;
@@ -16,6 +17,7 @@ public class EmptyStart_ColorShiftPlatform : MonoBehaviour {
 	void Start () {
 		render = gameObject.GetComponent<Renderer> ();
 		collision = gameObject.GetComponent<BoxCollider2D> ();
+		edge = gameObject.GetComponent<EdgeCollider2D> ();
 	}
 	
 	// Update is called once per frame
@@ -120,5 +122,6 @@ public class EmptyStart_ColorShiftPlatform : MonoBehaviour {
 	void setCollision() {
 		//collision.isTrigger = (52 <= x_pos && x_pos < 76);
 		collision.isTrigger = (render.material.color.a == 0);
+		edge.isTrigger = (render.material.color.a == 0);
 	}
 }
