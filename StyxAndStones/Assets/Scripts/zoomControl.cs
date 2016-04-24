@@ -16,17 +16,17 @@ public class zoomControl : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey("z") || Input.GetButton("Fire2")) {
 			if ((zoomSize < 25f) ) {
-				zoomSize += 0.1f;
+				zoomSize += 0.3f;
 				// Scale camera up
-				background.gameObject.transform.localScale += new Vector3 (0.029f, 0.029f, 0);
+				background.gameObject.transform.localScale += new Vector3 (0.0719f, 0.0719f, 0);
 			}
 		}
 		
 		else {
 			if (zoomSize > 7.5f) {
-				zoomSize -= 0.1f;
+				zoomSize -= 0.3f;
 				// Scale background back down
-				background.gameObject.transform.localScale -= new Vector3 (0.029f, 0.029f, 0);
+				background.gameObject.transform.localScale -= new Vector3 (0.0719f, 0.0719f, 0);
 			}
 			
 		}
