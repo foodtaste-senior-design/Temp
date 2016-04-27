@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\ButtonWall.cs" />
      <Compile Include="Assets\Scripts\Calibration.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\CemeteryZoomControl.cs" />
      <Compile Include="Assets\Scripts\CharacterControl.cs" />
      <Compile Include="Assets\Scripts\CheckPoint.cs" />
      <Compile Include="Assets\Scripts\CoinCounter.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\Enemy3.cs" />
      <Compile Include="Assets\Scripts\ExitPortal.cs" />
      <Compile Include="Assets\Scripts\FullStart_ColorShiftPlatform.cs" />
+     <Compile Include="Assets\Scripts\GauntletZoomControl.cs" />
      <Compile Include="Assets\Scripts\HeadCalibration.cs" />
      <Compile Include="Assets\Scripts\HeadPlatform.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />

@@ -25,8 +25,11 @@ public class ExitPortal : MonoBehaviour {
 		}
 		
 		if (Collectible.numCollected () == manager.totalStones) {
-			Sprite openPortal = Resources.Load<Sprite>("styx_portalOpen");
-			this.GetComponent<SpriteRenderer>().sprite = openPortal;
+			Sprite openPortal = Resources.Load<Sprite> ("styx_portalOpen");
+			this.GetComponent<SpriteRenderer> ().sprite = openPortal;
+		} else {
+			Sprite closedPortal = Resources.Load<Sprite>("styx_portalClosed");
+			this.GetComponent<SpriteRenderer>().sprite = closedPortal;
 		}
 	}
 

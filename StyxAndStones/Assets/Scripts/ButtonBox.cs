@@ -23,11 +23,18 @@ public class ButtonBox : MonoBehaviour {
 
 			if (!leverPulled){
 				buttonSFX.Play ();
-				flip ();
+				//flip ();
 				leverPulled = true;
 			}	
 		}
 
+		if (leverPulled) {
+			Sprite openPortal = Resources.Load<Sprite> ("lever-on");
+			this.GetComponent<SpriteRenderer> ().sprite = openPortal;
+		} else {
+			Sprite closedPortal = Resources.Load<Sprite>("lever-off");
+			this.GetComponent<SpriteRenderer>().sprite = closedPortal;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
@@ -63,7 +70,7 @@ public class ButtonBox : MonoBehaviour {
 		// Check if the button has actually been flipped
 		if (leverPulled == true) {
 			leverPulled = false;
-			flip ();
+			//flip ();
 			for (int i = 0; i < walls.Length; i++)
 				walls [i].resetWall ();
 		}

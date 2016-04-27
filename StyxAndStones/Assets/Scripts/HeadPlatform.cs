@@ -19,7 +19,7 @@ public class HeadPlatform : MonoBehaviour {
 		kinectMin_y = PlayerPrefs.GetFloat ("YMin");				// The uppermost point to which the players head should move
 		kinectMax_y = PlayerPrefs.GetFloat ("YMax");
 
-		Debug.Log ("X-min: " + kinectMin_x.ToString ("0.00") + ", X-max: " + kinectMax_x.ToString ("0.00") + ", Y-min: " + kinectMin_y.ToString ("0.00") + ", Y-max: " + kinectMax_y.ToString ("0.00"));
+		//Debug.Log ("X-min: " + kinectMin_x.ToString ("0.00") + ", X-max: " + kinectMax_x.ToString ("0.00") + ", Y-min: " + kinectMin_y.ToString ("0.00") + ", Y-max: " + kinectMax_y.ToString ("0.00"));
 	}
 	
 	// Update is called once per frame

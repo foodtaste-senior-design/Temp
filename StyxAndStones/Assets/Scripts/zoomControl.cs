@@ -15,18 +15,24 @@ public class zoomControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey("z") || Input.GetButton("Fire2")) {
-			if ((zoomSize < 25f) ) {
-				zoomSize += 0.3f;
+			if ((zoomSize < 35f) ) {
 				// Scale camera up
-				background.gameObject.transform.localScale += new Vector3 (0.0719f, 0.0719f, 0);
+				zoomSize += 0.45f;
+				background.gameObject.transform.localScale += new Vector3(0.12f, 0.12f, 0); ;
+				background.gameObject.transform.position += new Vector3(0.2f, -0.35f, 0); ;
+
+				GetComponent<Camera>().transform.position += new Vector3(0.2f, -0.35f, 0);
 			}
 		}
 		
 		else {
 			if (zoomSize > 7.5f) {
-				zoomSize -= 0.3f;
 				// Scale background back down
-				background.gameObject.transform.localScale -= new Vector3 (0.0719f, 0.0719f, 0);
+				zoomSize -= 0.45f;
+				background.gameObject.transform.localScale -= new Vector3(0.12f, 0.12f, 0);
+				background.gameObject.transform.position -= new Vector3(0.2f, -0.35f, 0); ;
+
+				GetComponent<Camera>().transform.position -= new Vector3(0.2f, -0.35f, 0);
 			}
 			
 		}
