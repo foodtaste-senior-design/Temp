@@ -101,10 +101,14 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void exitPress(){
+		/*
 		quitMenu.enabled = true;
 		PauseMenu.enabled = false;
 		MMButton.SetActive(false);
 		EventSystem.current.SetSelectedGameObject (YesButton);
+		*/
+
+		Application.Quit ();
 	}
 
 	public void NoPress(){

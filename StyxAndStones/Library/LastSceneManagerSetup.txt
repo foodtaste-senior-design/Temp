@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Tutorial_3.unity
+- path: Assets/Gauntlet.unity
   isLoaded: 1
   isActive: 1

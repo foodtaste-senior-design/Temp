@@ -46,12 +46,19 @@ public class SimplePlatformController : MonoBehaviour {
 			rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * max_speed, rb2d.velocity.y);
 		}
 
-		if (height > 0 ) {//&& !facing_right) {
+		if (height < 0) {//&& !facing_right) {
 			//Flip ();
-			gameObject.GetComponentInChildren<SpriteRenderer>().flipX = false;    // Flip just the SpriteRenderer rather than the entire object and its children
-		} else if (height < 0 ) {// && facing_right) {
+			Sprite jimLeft = Resources.Load<Sprite>("styx_jimLeft");
+			gameObject.GetComponentInChildren<SpriteRenderer>().sprite = jimLeft;
+			//gameObject.GetComponentInChildren<SpriteRenderer> ().flipX = false;    // Flip just the SpriteRenderer rather than the entire object and its children
+		} else if (height > 0) {// && facing_right) {
 			//Flip ();
-			gameObject.GetComponentInChildren<SpriteRenderer>().flipX = true;
+			Sprite jimRight = Resources.Load<Sprite>("styx_jimRight");
+			gameObject.GetComponentInChildren<SpriteRenderer>().sprite = jimRight;
+			//gameObject.GetComponentInChildren<SpriteRenderer> ().flipX = true;
+		} else {
+			Sprite jimFront = Resources.Load<Sprite>("styx_jimFront");
+			gameObject.GetComponentInChildren<SpriteRenderer>().sprite = jimFront;
 		}
 
 		if (jump) {

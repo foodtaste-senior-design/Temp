@@ -13,12 +13,29 @@ using System.Collections.Generic;
 public class LevelSelectPortal : MonoBehaviour {
 	
 	public string nextLevel;
+	public int unlockOrder;
 
 	private bool inPortal;
+	private bool unlocked;
+	private TextMesh levelName;
 	
 	// Use this for initialization
 	void Start () {
 		inPortal = false;
+		levelName = gameObject.GetComponentInChildren<TextMesh>();
+		levelName.characterSize = 0f;
+
+		//PlayerPrefs.DeleteAll ();
+
+		if ((PlayerPrefs.GetInt ("levelsUnlocked") < unlockOrder)) {
+			// Change sprite
+			Sprite closedPortal = Resources.Load<Sprite> ("styx_portalClosed");
+			this.GetComponent<SpriteRenderer> ().sprite = closedPortal;
+			unlocked = false;
+
+		} else {
+			unlocked = true;
+		}
 	}
 
 
@@ -30,15 +47,16 @@ public class LevelSelectPortal : MonoBehaviour {
 		if (inPortal && Input.GetButtonDown ("Fire1")) {
 			PlayerPrefs.SetString ("nextLevelText", nextLevel);			// Store the level name to be displayed on transition
 			PlayerPrefs.SetString ("sceneToLoad", nextLevel);			// Store the level name to be loaded after transition
-			SceneManager.LoadScene ("Transition");
+			if (unlocked)
+				SceneManager.LoadScene ("Transition");
 		}
 		
 	}
 	
 	void OnTriggerEnter2D(Collider2D other) {
-		//numCollected requirement will change per level; hash this out somehow
 		if (other.transform.tag == "Player") {
 			inPortal = true;
+			levelName.characterSize = 0.2f;
 		}
 	}
 	
@@ -46,6 +64,7 @@ public class LevelSelectPortal : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.transform.tag == "Player") {
 			inPortal = false;
+			levelName.characterSize = 0f;
 		}
 	}
 }

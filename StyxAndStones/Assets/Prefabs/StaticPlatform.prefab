@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 419948}
   - 212: {fileID: 21206630}
   - 114: {fileID: 11445852}
-  - 61: {fileID: 6196310}
   - 68: {fileID: 6827644}
+  - 60: {fileID: 6077264}
   m_Layer: 12
   m_Name: StaticPlatform
   m_TagString: ground
@@ -26,24 +26,82 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -33, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalPosition: {x: -0.1, y: -0.4, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6196310
-BoxCollider2D:
+--- !u!60 &6077264
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146778}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 5f9c37fb361d64b788498991d3de93d7, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0435517654, y: .135905266}
-  serializedVersion: 2
-  m_Size: {x: 10.5854902, y: 1.66242027}
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 1.64, y: -1.62}
+      - {x: 1.81, y: -1.5999999}
+      - {x: 2.06, y: -1.53}
+      - {x: 2.18, y: -1.5}
+      - {x: 2.37, y: -1.4}
+      - {x: 2.48, y: -1.3399999}
+      - {x: 2.69, y: -1.13}
+      - {x: 3.06, y: -0.82}
+      - {x: 3.09, y: -0.88}
+      - {x: 3.33, y: -0.71999997}
+      - {x: 3.46, y: -0.66999996}
+      - {x: 3.6799998, y: -0.62}
+      - {x: 4.0299997, y: -0.48999998}
+      - {x: 4.2, y: -0.42}
+      - {x: 4.2599998, y: -0.44}
+      - {x: 4.3673286, y: -0.37732887}
+      - {x: 4.43, y: -0.32999998}
+      - {x: 4.77, y: -0.19}
+      - {x: 4.9, y: -0.11}
+      - {x: 4.98, y: -0.04}
+      - {x: 5.0899997, y: 0.17}
+      - {x: 5.13, y: 0.31}
+      - {x: 5.26, y: 0.9552889}
+      - {x: 0.1279583, y: 0.97842884}
+      - {x: -5.2640896, y: 1.0040884}
+      - {x: -5.24, y: 0.65}
+      - {x: -5.1331043, y: 0.43999958}
+      - {x: -5.14, y: 0.39999998}
+      - {x: -5.02, y: 0.14999999}
+      - {x: -4.89, y: -0.04}
+      - {x: -4.5699997, y: -0.42}
+      - {x: -4.48, y: -0.53}
+      - {x: -4.3399997, y: -0.65999997}
+      - {x: -4.14, y: -0.82}
+      - {x: -3.83, y: -1.01}
+      - {x: -3.33, y: -1.31}
+      - {x: -3.1299999, y: -1.41}
+      - {x: -3.11, y: -1.43}
+      - {x: -2.9199998, y: -1.54}
+      - {x: -2.6499999, y: -1.55}
+      - {x: -2.52, y: -1.52}
+      - {x: -2.33, y: -1.4399999}
+      - {x: -1.65, y: -1.13}
+      - {x: -1.51, y: -1.09}
+      - {x: -1.38, y: -1.06}
+      - {x: -1.25, y: -1.04}
+      - {x: -1.09, y: -1.09}
+      - {x: -0.88, y: -1.17}
+      - {x: -0.57, y: -1.37}
+      - {x: -0.19, y: -1.5799999}
+      - {x: 0.04, y: -1.6899999}
+      - {x: 0.19, y: -1.7199999}
+      - {x: 0.31, y: -1.74}
+      - {x: 0.44, y: -1.74}
+      - {x: 0.71999997, y: -1.7199999}
+      - {x: 0.96999997, y: -1.6999999}
+      - {x: 1.36, y: -1.66}
 --- !u!68 &6827644
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -51,13 +109,17 @@ EdgeCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146778}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 6200000, guid: 1debb068374764196a01e1c69c1f413f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -5.29897022, y: 0}
-  - {x: 5.25429678, y: 0}
+  - {x: -5.0577717, y: 0}
+  - {x: -5.3361053, y: 0.8594818}
+  - {x: 0.39663506, y: 0.3064108}
+  - {x: 5.3186436, y: 0.9242422}
+  - {x: 5.0871773, y: -0.041779518}
 --- !u!114 &11445852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,14 +149,18 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b5ea4e814cee56e4bbe87e5952d4252b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -73,6 +73,7 @@ public class menuScript : MonoBehaviour
 	// Update is called when pressed
 	public void ExitPress()
 	{
+		/*
 		quitMenu.enabled = true;
 
 		startText.enabled = false;
@@ -80,9 +81,9 @@ public class menuScript : MonoBehaviour
 		settingText.enabled = false;
 		//settingMenu.enabled = false;
 		EventSystem.current.SetSelectedGameObject(yesButton);
+		*/
 
-
-
+		Application.Quit ();
 	}
 
 

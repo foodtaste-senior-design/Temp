@@ -14,9 +14,24 @@ public class Calibration : MonoBehaviour {
 		Debug.Log (PlayerPrefs.GetFloat ("XMin") + " " + PlayerPrefs.GetFloat ("XMax") + " " + PlayerPrefs.GetFloat ("YMin") + " " + PlayerPrefs.GetFloat ("YMax"));
 
 		min_X = PlayerPrefs.GetFloat ("XMin");
+
 		max_X = PlayerPrefs.GetFloat ("XMax");
+		if (PlayerPrefs.GetFloat ("XMax") == 0) {
+			max_X = 400;
+			PlayerPrefs.SetFloat ("XMax", max_X);
+		}
+
 		min_Y = PlayerPrefs.GetFloat ("YMin");
+		if (PlayerPrefs.GetFloat ("YMin") == 0) {
+			min_Y = 70;
+			PlayerPrefs.SetFloat ("YMin", min_Y);
+		}
+
 		max_Y = PlayerPrefs.GetFloat ("YMax");
+		if (PlayerPrefs.GetFloat ("YMax") == 0) {
+			max_Y = 310;
+			PlayerPrefs.SetFloat ("YMax", max_Y);
+		}
 
 		/* do this if Floats are null
 		PlayerPrefs.SetFloat ("XMin", 0);

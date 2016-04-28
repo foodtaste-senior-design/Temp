@@ -5,7 +5,8 @@ using System.Collections;
 public class ExitPortal : MonoBehaviour {
 
 	public string nextLevel;
-		
+	public int levelOrder;
+
 	private static bool inPortal;
 	private LevelManager manager;
 
@@ -21,6 +22,8 @@ public class ExitPortal : MonoBehaviour {
 		//transform.Rotate (0,0,100*Time.deltaTime); //rotates 50 degrees per second around z axis
 		// Check if player is trying to use the portal and has met the requirements
 		if (inPortal && Input.GetButtonDown ("Fire1")) {
+			if (PlayerPrefs.GetInt ("levelsUnlocked") < levelOrder)
+				PlayerPrefs.SetInt ("levelsUnlocked", PlayerPrefs.GetInt ("levelsUnlocked") + 1);
 			SceneManager.LoadScene (nextLevel);
 		}
 		
