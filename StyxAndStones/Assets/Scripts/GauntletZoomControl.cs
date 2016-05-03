@@ -15,6 +15,7 @@ public class GauntletZoomControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey("z") || Input.GetButton("Fire2")) {
+			Time.timeScale = 0.0f;
 			if ((zoomSize < 35f) ) {
                 // Scale camera up
 
