@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour {
 		// Set Death Counter
 		deathCount = 0;
 		deathCountText = GameObject.Find ("DeathCount").GetComponent<Text> ();
-		deathCountText.text = "Deaths: " + deathCount;
+		deathCountText.text = "" + deathCount;
 
 
 		playerAlive = true;

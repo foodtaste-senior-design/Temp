@@ -11,8 +11,6 @@ public class Calibration : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log (PlayerPrefs.GetFloat ("XMin") + " " + PlayerPrefs.GetFloat ("XMax") + " " + PlayerPrefs.GetFloat ("YMin") + " " + PlayerPrefs.GetFloat ("YMax"));
-
 		min_X = PlayerPrefs.GetFloat ("XMin");
 
 		max_X = PlayerPrefs.GetFloat ("XMax");
@@ -32,40 +30,79 @@ public class Calibration : MonoBehaviour {
 			max_Y = 310;
 			PlayerPrefs.SetFloat ("YMax", max_Y);
 		}
-
-		/* do this if Floats are null
-		PlayerPrefs.SetFloat ("XMin", 0);
-		PlayerPrefs.SetFloat ("XMax", 400);
-		PlayerPrefs.SetFloat ("YMin", 70);
-		PlayerPrefs.SetFloat ("YMax", 310);
-		*/
-
-		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
-	}
+}
 	
 	// Update is called once per frame
 	void Update () {
+        Sprite nextText;
 
-		if (Input.GetButtonDown ("A")) {
-			setYMax ();
-			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
-		}
-		if (Input.GetButtonDown ("B")) {
-			setXMax ();
-			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
-		}
-		if (Input.GetButtonDown ("X")) {
-			setXMin ();
-			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
-		}
-		if (Input.GetButtonDown ("Y")) {
-			setYMin();
-			gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
-		}
-		if (Input.GetButtonDown ("Start")) {
-			confirmCalibration();
-		}
-	}
+        if (Input.GetButtonDown("A") && this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateDistance")
+        {
+            nextText = Resources.Load<Sprite>("styx_calibrateMaxHeight");
+            this.GetComponent<SpriteRenderer>().sprite = nextText;
+        }
+
+        if (Input.GetButtonDown("Y") && this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateMaxHeight")
+        {
+            setYMin();
+
+            nextText = Resources.Load<Sprite>("styx_calibrateMinHeight");
+            this.GetComponent<SpriteRenderer>().sprite = nextText;
+        }
+
+        if (Input.GetButtonDown("A") && this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateMinHeight")
+        {
+            setYMax();
+
+            nextText = Resources.Load<Sprite>("styx_calibrateMaxLeft");
+            this.GetComponent<SpriteRenderer>().sprite = nextText;
+        }
+
+        if (Input.GetButtonDown("X") && this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateMaxLeft")
+        {
+            setXMin();
+
+            nextText = Resources.Load<Sprite>("styx_calibrateMaxRight");
+            this.GetComponent<SpriteRenderer>().sprite = nextText;
+        }
+
+        if (Input.GetButtonDown("B") && this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateMaxRight")
+        {
+            setXMax();
+
+            if (max_X - min_X >= 200 && max_Y - min_Y >= 125)
+            {
+                nextText = Resources.Load<Sprite>("styx_calibrateSaved");
+                this.GetComponent<SpriteRenderer>().sprite = nextText;
+            }
+            else if (max_X - min_X >= 200 && max_Y - min_Y < 125)
+            {
+                nextText = Resources.Load<Sprite>("styx_calibrateVerticalError");
+                this.GetComponent<SpriteRenderer>().sprite = nextText;
+            }
+            else if (max_X - min_X < 200 && max_Y - min_Y >= 125)
+            {
+                nextText = Resources.Load<Sprite>("styx_calibrateHorizontalError");
+                this.GetComponent<SpriteRenderer>().sprite = nextText;
+            }
+            else
+            {
+                nextText = Resources.Load<Sprite>("styx_calibrateDistanceError");
+                this.GetComponent<SpriteRenderer>().sprite = nextText;
+            }
+        }
+
+        if (Input.GetButtonDown("Start") && this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateSaved")
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
+
+        if (Input.GetButtonDown("A") && (this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateVerticalError" || this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateHorizontalError" || this.GetComponent<SpriteRenderer>().sprite.name == "styx_calibrateDistanceError"))
+        {
+            nextText = Resources.Load<Sprite>("styx_calibrateDistance");
+            this.GetComponent<SpriteRenderer>().sprite = nextText;
+        }
+    }
 
 	void setXMin () {
 		if (BodySourceView.getX () > 0) {
@@ -106,19 +143,5 @@ public class Calibration : MonoBehaviour {
 			max_Y = 310;
 			PlayerPrefs.SetFloat("YMax", max_Y);
 		}
-	}
-
-	void confirmCalibration () {
-		if (max_X - min_X >= 200 && max_Y - min_Y >= 125)
-			SceneManager.LoadScene ("StartMenu");
-		else {
-			StartCoroutine ( LogError() );
-		}
-	}
-
-	IEnumerator LogError () {
-		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00") + "\n<color=orange>Values not sufficiently far apart.</color>";
-		yield return new WaitForSeconds (2);
-		gameObject.GetComponent<TextMesh> ().text = "X-min: " + min_X.ToString ("0.00") + "\nX-max: " + max_X.ToString ("0.00") + "\nY-min: " + min_Y.ToString ("0.00") + "\nY-max: " + max_Y.ToString ("0.00");
 	}
 }

@@ -24,7 +24,8 @@ public class TimeManager : MonoBehaviour {
 		if(timerRunning)
 			countingTime += Time.deltaTime;
 
-		timeText.text = "Time: " + "" + Mathf.Round(countingTime);
+        float seconds = Mathf.Round(countingTime);
+		timeText.text = "" + ((int)seconds/60).ToString("00") + ":" + (seconds%60).ToString("00");
 	}
 
 	// Resets time to zero

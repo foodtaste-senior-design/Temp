@@ -120,7 +120,8 @@ public class FullStart_ColorShiftPlatform : MonoBehaviour {
 	}
 
 	void setCollision() {
-		collision.isTrigger = (175 < x_pos && x_pos < 275);
-		edge.isTrigger = (175 < x_pos && x_pos < 275);
+		//collision.isTrigger = (52 <= x_pos && x_pos < 76);
+		collision.isTrigger = (render.material.color.a == 0);
+		edge.isTrigger = (render.material.color.a == 0);
 	}
 }

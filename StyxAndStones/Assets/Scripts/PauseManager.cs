@@ -77,9 +77,9 @@ public class PauseManager : MonoBehaviour {
 	}
 	void PauseGame (bool state){
 		if (state) {
-			//Time.timeScale = 0.0f;}
+			Time.timeScale = 0.0f;}
 		else {
-			//Time.timeScale=1.0f;}
+			Time.timeScale=1.0f;}
 
 		pausePanel.SetActive(state);
 
