@@ -11,6 +11,8 @@ public class HeadPlatform : MonoBehaviour {
 	private float kinectMax_x;			// The rightmost point to which the players head should move
 	private float kinectMin_y;				// The uppermost point to which the players head should move
 	private float kinectMax_y;			// The lowermost point to which the players head should move
+	private float maxSpeed;
+	private float minSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +21,8 @@ public class HeadPlatform : MonoBehaviour {
 		kinectMin_y = PlayerPrefs.GetFloat ("YMin");				// The uppermost point to which the players head should move
 		kinectMax_y = PlayerPrefs.GetFloat ("YMax");
 
-		//Debug.Log ("X-min: " + kinectMin_x.ToString ("0.00") + ", X-max: " + kinectMax_x.ToString ("0.00") + ", Y-min: " + kinectMin_y.ToString ("0.00") + ", Y-max: " + kinectMax_y.ToString ("0.00"));
+		maxSpeed = 35;
+		minSpeed = 5;
 	}
 	
 	// Update is called once per frame
@@ -40,7 +43,24 @@ public class HeadPlatform : MonoBehaviour {
 			float new_X = points[0].position.x + (((head_x-kinectMin_x)/(kinectMax_x-kinectMin_x)) * (points[1].position.x-points[0].position.x));
 			float new_Y = points[0].position.y + (((head_y-kinectMin_y)/(kinectMax_y-kinectMin_y)) * (points[1].position.y-points[0].position.y));
 
-			platform.transform.position = new Vector2 (new_X, new_Y);
+			Vector3 tempPos = new Vector3 (new_X, new_Y, 0);
+
+			float speed = 0;
+			if (new_X != platform.transform.position.x) {
+				speed = Mathf.Abs ((new_X - platform.transform.position.x) / (points [1].position.x - points [0].position.x)) * maxSpeed;
+			}
+			if (new_Y != platform.transform.position.y) {
+				speed = Mathf.Abs ((new_Y - platform.transform.position.y) / (points [1].position.y - points [0].position.y)) * maxSpeed;
+			}
+			if (speed < minSpeed) {
+				speed = minSpeed;
+			}
+
+			platform.transform.position = Vector3.MoveTowards (platform.transform.position, tempPos, Time.deltaTime * speed);
+			//platform.transform.position = new Vector2 (new_X, new_Y);
+
+			//--old defunct code, keeping around for posterity's sake--//
+
 			/*
 			float platformMin_x = platformMin.position.x;	// Minimum x value for platform
 			float platformMax_x = platformMax.position.x;	// Maximum x value for platform

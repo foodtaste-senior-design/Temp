@@ -13,8 +13,23 @@ public class BodySourceView : MonoBehaviour
 	private BodySourceManager _BodyManager;
 	
 	public Text coordinates;
+
+	// Head coordinates
 	static float x;
 	static float y;
+
+	// Hip coordinates
+	static float hipLeftX;
+	static float hipLeftY;
+	static float hipRightX;
+	static float hipRightY;
+
+	// Knee coordinates
+	static float kneeLeftX;
+	static float kneeLeftY;
+	static float kneeRightX;
+	static float kneeRightY;
+
 	public static bool bodyTracked;
 	
 	private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
@@ -117,17 +132,58 @@ public class BodySourceView : MonoBehaviour
 
 				//RefreshBodyObject(body, _Bodies[body.TrackingId]);
 				
-				// New head tracking code (testing)
+				// head tracking code
 				Kinect.Joint headJoint = body.Joints[Kinect.JointType.Head];
+
+				Kinect.Joint hipLeftJoint = body.Joints [Kinect.JointType.HipLeft];
+				Kinect.Joint hipRightJoint = body.Joints [Kinect.JointType.HipRight];
+
+				Kinect.Joint kneeLeftJoint = body.Joints [Kinect.JointType.KneeLeft];
+				Kinect.Joint kneeRightJoint = body.Joints [Kinect.JointType.KneeRight];
+
 				if (headJoint.TrackingState == Kinect.TrackingState.Tracked)
 				{
 					Kinect.KinectSensor sensor = _BodyManager.getSensor();
 					Kinect.DepthSpacePoint dsp = sensor.CoordinateMapper.MapCameraPointToDepthSpace(headJoint.Position);
+
+					Kinect.DepthSpacePoint hipLeftDSP = sensor.CoordinateMapper.MapCameraPointToDepthSpace(hipLeftJoint.Position);
+					Kinect.DepthSpacePoint hipRightDSP = sensor.CoordinateMapper.MapCameraPointToDepthSpace(hipRightJoint.Position);
+
+					Kinect.DepthSpacePoint kneeLeftDSP = sensor.CoordinateMapper.MapCameraPointToDepthSpace(kneeLeftJoint.Position);
+					Kinect.DepthSpacePoint kneeRightDSP = sensor.CoordinateMapper.MapCameraPointToDepthSpace(kneeRightJoint.Position);
+
 					x = dsp.X;
 					y = dsp.Y;
+
+					hipLeftX = hipLeftDSP.X;
+					hipLeftY = hipLeftDSP.Y;
+					hipRightX = hipRightDSP.X;
+					hipRightY = hipRightDSP.Y;
+
+					kneeLeftX = kneeLeftDSP.X;
+					kneeLeftY = kneeLeftDSP.Y;
+					kneeRightX = kneeRightDSP.X;
+					kneeRightY = kneeRightDSP.Y;
+
 					bodyTracked = true;
-					//Debug.Log (x);
-					
+
+					// Debug Squatting
+/*					float squatLeft = Mathf.Abs (hipLeftY - kneeLeftY);
+					float squatRight = Mathf.Abs (hipRightY - kneeRightY);
+
+					if (squatLeft < 25 && squatRight < 25) {
+						Debug.Log ("Squat: " + squatLeft + ", " + squatRight);
+					} else {
+						Debug.Log ("NOT SQUAT: " + squatLeft + ", " + squatRight);
+					}
+*?
+/*					// Print coordinates
+					Debug.Log ("Left Hip: " + hipLeftX + ", " + hipLeftY);
+					Debug.Log ("Right Hip: " + hipRightX + ", " + hipRightY);
+					Debug.Log ("Left Knee: " + kneeLeftX + ", " + kneeLeftY);
+					Debug.Log ("Right Knee: " + kneeRightX + ", " + kneeRightY);
+*/
+
 				}
 			}
 		}
@@ -210,6 +266,18 @@ public class BodySourceView : MonoBehaviour
 
 	public static float getY(){
 		return y;
+	}
+
+	// Return hip coordinates
+	public static float[] getHips(){
+		float[] hips = new float[4]{ hipLeftX, hipLeftY, hipRightX, hipRightY };
+		return hips;
+	}
+
+	// return knee coordinates
+	public static float[] getKnees(){
+		float[] knees = new float[4]{ kneeLeftX, kneeLeftY, kneeRightX, kneeRightY };
+		return knees;
 	}
 
 	public static bool isBodyTracked(){

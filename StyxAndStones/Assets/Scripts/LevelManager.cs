@@ -99,7 +99,7 @@ public class LevelManager : MonoBehaviour {
 		player.GetComponentInChildren<Renderer> ().enabled = false; 													// Make player disappear
 		player.background.GetComponent<Renderer> ().enabled = true;
 		deathCount += 1;																								// Update death counter
-		deathCountText.text = "Deaths: " + deathCount;
+		deathCountText.text = "" + deathCount;
 		yield return new WaitForSeconds (respawnDelay);																	// Delay between respawn and death
 		CoinCounter.loseCoins();																						// Reset coins and coin count
 		player.transform.position = currentCheckpoint.transform.position;												// Respawn player at checkpoint

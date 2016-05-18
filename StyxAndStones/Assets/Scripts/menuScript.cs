@@ -68,6 +68,11 @@ public class menuScript : MonoBehaviour
 			ExitIcon.enabled = true;
 		}
 		else { ExitIcon.enabled = false; }
+
+		if (Input.GetButtonDown("RightStickClick") && Input.GetButtonDown("LeftStickClick")){
+			PlayerPrefs.DeleteAll();
+		}
+
 	}
 
 	// Update is called when pressed

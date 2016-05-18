@@ -1621,7 +1621,7 @@ Prefab:
         type: 3}
     - target: {fileID: 22414208, guid: 0e0c42bb9b9421d4388ce13d568b16fc, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 12
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 11408752, guid: 0e0c42bb9b9421d4388ce13d568b16fc, type: 2}
       propertyPath: m_FontData.m_Font
